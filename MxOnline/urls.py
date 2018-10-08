@@ -21,7 +21,6 @@ from MxOnline.settings import MEDIA_ROOT
 import xadmin
 from users.views import (LoginView, RegisterView, ActiveUserView, ForgetPwdView, ResetView,
                          ModifyPwdView)
-from organization.views import OrgView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,7 +30,7 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('forget/', ForgetPwdView.as_view(), name='forget_pwd'),
     path('modify_pwd/', ModifyPwdView.as_view(), name='modify_pwd'),
-    path('org_list/', OrgView.as_view(), name='org_list'),
+    path("org/", include('organization.urls', namespace="org")),
     path('captcha/', include('captcha.urls')),
     re_path('active/(?P<active_code>.*)/', ActiveUserView.as_view(), name='user_active'),
     re_path('reset/(?P<active_code>.*)/', ResetView.as_view(), name='reset_pwd'),

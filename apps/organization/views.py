@@ -46,7 +46,7 @@ class OrgView(View):
         except PageNotAnInteger:
             page = 1
         # 这里指从allorg中取五个出来，每页显示5个
-        p = Paginator(all_orgs, 2, request=request)
+        p = Paginator(all_orgs, 3, request=request)
         orgs = p.page(page)
 
         return render(request, "org-list.html", {
@@ -57,4 +57,33 @@ class OrgView(View):
             "category": category,
             'hot_orgs': hot_orgs,
             'sort': sort,
+        })
+
+
+class AddUserAskView(View):
+    # 用户添加咨询
+    def post(self, request):
+        userask_form = UserAskForm(request.POST)
+        if userask_form.is_valid():
+            user_ask = userask_form.save(commit=True)
+            # 如果保存成功,返回json字符串,后面content type是告诉浏览器返回的数据类型
+            return HttpResponse('{"status":"success"}', content_type='application/json')
+        else:
+            # 如果保存失败，返回json字符串,并将form的报错信息通过msg传递到前端
+            return HttpResponse('{"status":"fail", "msg":"添加出错"}', content_type='application/json')
+
+
+class OrgHomeView(View):
+    # 机构首页
+
+    def get(self, request, org_id):
+        # 根据id找到课程机构
+        course_org = CourseOrg.objects.get(id=int(org_id))
+        # 反向查询到课程机构的所有课程和老师
+        all_courses = course_org.course_set.all()[:4]
+        all_teacher = course_org.teacher_set.all()[:2]
+        return render(request, 'org-detail-homepage.html', {
+            'course_org': course_org,
+            'all_courses': all_courses,
+            'all_teacher': all_teacher,
         })

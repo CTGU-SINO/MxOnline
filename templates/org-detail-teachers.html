@@ -1,26 +1,18 @@
-{#templates/org-detail-teacher.html#}
-{% extends 'org-base.html' %}
-{% load staticfiles %}
-
-{% block title %}机构教师-慕学在线网{% endblock %}
-
+{% extends 'org_base.html' %}
+{% block title %}慕课网教师列表 - 慕学网{% endblock %}
 {% block page_path %}机构教师{% endblock %}
-
 {% block right_form %}
-    <div class="right companycenter layout" >
+<div class="right companycenter layout" >
         <div class="head">
             <h1>机构讲师</h1>
         </div>
         <div class="messagelist">
             <div class=" butler_list butler-fav-box">
-
                 {% for teacher in all_teachers %}
                 <dl class="des users">
                     <dt>
                         <a href="">
-                        <img width="100" height="100" class="scrollLoading"
-                             data-url="{{ MEDIA_URL }}{{ teacher.image }}"
-                             src="{{ MEDIA_URL }}{{ teacher.image }}"/>
+                        <img width="100" height="100" class="scrollLoading" data-url="{{ MEDIA_URL }}{{ teacher.image }}" src="{{ MEDIA_URL }}{{ teacher.image }}"/>
                         </a>
                     </dt>
                     <dd>
@@ -31,7 +23,7 @@
                         </h1>
                         <ul class="cont clearfix">
                             <li class="time">工作年限：<span>{{ teacher.work_years }}年</span></li>
-                            <li class="c7">课程数：<span>{{ teacher.points }}</span></li>
+                            <li class="c7">课程数：<span>3</span></li>
                         </ul>
                     </dd>
                 </dl>
@@ -41,3 +33,5 @@
         </div>
     </div>
 {% endblock %}
+
+

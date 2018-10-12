@@ -1,8 +1,8 @@
 __author__ = 'ct'
 __date__ = '18-10-8 下午2:20'
 
-from organization.views import (OrgView, AddUserAskView, OrgHomeView, OrgCourseView, OrgDescView,
-                                OrgTeacherView)
+from .views import (OrgView, AddUserAskView, OrgHomeView, OrgCourseView, OrgDescView,
+                    OrgTeacherView, AddFavView)
 
 from django.urls import path, re_path
 
@@ -16,4 +16,5 @@ urlpatterns = [
     re_path('course/(?P<org_id>\d+)/', OrgCourseView.as_view(), name="org_course"),
     re_path('desc/(?P<org_id>\d+)/', OrgDescView.as_view(), name="org_desc"),
     re_path('teacher/(?P<org_id>\d+)/', OrgTeacherView.as_view(), name="org_teacher"),
+    re_path('add_fav/', AddFavView.as_view(), name="add_fav"),
 ]

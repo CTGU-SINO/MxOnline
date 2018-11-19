@@ -762,6 +762,7 @@ i {
     line-height: 2em;
     overflow: hidden;
     cursor: pointer;
+    margin-bottom: 30px;
 }
 #notice a {
     color: #ff7a39;

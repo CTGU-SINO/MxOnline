@@ -2,7 +2,7 @@ __author__ = 'ct'
 __date__ = '18-10-11 下午1:49'
 
 
-from .views import (CourseListView, CourseDetailView, CourseInfoView, CommentsView, AddCommentsView)
+from .views import (CourseListView, CourseDetailView, CourseInfoView, CommentsView, AddCommentsView, VideoPlayView)
 
 from django.urls import path, re_path
 
@@ -17,4 +17,5 @@ urlpatterns = [
     re_path('comment/(?P<course_id>\d+)/', CommentsView.as_view(), name="course_comment"),
     # re_path('teacher/(?P<org_id>\d+)/', OrgTeacherView.as_view(), name="org_teacher"),
     re_path('add_comment/', AddCommentsView.as_view(), name="add_comment"),
+    re_path('video/(?P<video_id>\d+)/', VideoPlayView.as_view(), name='video_play'),
 ]

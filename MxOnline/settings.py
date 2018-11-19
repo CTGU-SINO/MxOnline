@@ -95,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "mxonline",
         'USER': 'root',
-        'PASSWORD': "root",
+        'PASSWORD': "jsan456789",
         'HOST': "127.0.0.1",
         'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB;'}
     }
